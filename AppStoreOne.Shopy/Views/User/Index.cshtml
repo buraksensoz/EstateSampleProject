@@ -1,0 +1,61 @@
+﻿@model List<UserListDto>
+<h4>Kullanıcılar</h4>
+
+<a asp-controller="User" asp-action="AddUser" class="btn btn-primary">Yeni Kullanıcı</a>
+<br />
+
+
+<div class="table-responsive">
+    <table class="table table-bordered  table-light table-hover caption-top">
+
+        <tr>
+            <th class="text-md-center bs-td">
+                Kullanıcı Adı
+            </th>
+            <th class="text-md-center bs-td">
+                İsim Soyad
+            </th>
+            <th class="text-md-center bs-td">
+                E-Posta
+            </th>
+            <th class="text-md-center bs-td">
+                Telefon
+            </th>
+            <th class="text-md-center bs-td">
+                Yetki Tipi
+            </th>
+
+            <th class="text-center bs-td">
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr style="background-color:#FFF">
+        <td class="text-start align-middle">
+            @item.UserName
+        </td>
+        <td class="text-md-center align-middle">
+            @item.FullName
+        </td>
+        <td class="text-md-center align-middle">
+            @item.Email
+        </td>
+        <td class="text-md-center align-middle">
+            @item.PhoneNumber
+        </td>
+        <td class="text-md-center align-middle">
+            @if (item.AuthType == 1)
+            {<p>Yönetici</p> }
+            else
+            { <p>Standart</p> }
+        </td>
+        <th class="text-end align-middle">
+            <a asp-action="updateuser" asp-controller="user" asp-route-id="@item.Id" class="btn btn-success">Düzenle</a>
+            <a asp-action="deleteuser" asp-controller="user" asp-route-id="@item.Id" class="btn btn-danger">Sil</a>
+        </th>
+    </tr>
+
+        }
+
+    </table>
+</div>

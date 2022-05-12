@@ -1,0 +1,307 @@
+﻿@using AppStoreOne.Entities.Concrete
+@model EstateDaireDto
+
+
+
+<form asp-action="AddDaire" method="post" class="mx-auto bs-w-form mt-3 border border-1 shadow p-3">
+    <div class="form-group text-lg-center ">
+        <h4 class="font-weight-bold">Daire Ekle</h4>
+        <hr />
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Başlık</label>
+                    <span asp-validation-for="@Model.Baslik" class="text-danger"></span>
+                    <input asp-for="@Model.Baslik" class="form-control" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="input-group mb-3">
+                    <label style="width:100px" class="pt-1">Emlak İşlem</label>
+                    <span asp-validation-for="@Model.Islem" class="text-danger"></span>
+                    <select asp-for="@Model.Islem" class="form-select" style="width:200px">
+                        <option value="1">Satılık</option>
+                        <option value="2">Kiralık</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="input-group mb-3">
+                    <label style="width:100px" class="pt-1">Mülk Sahibi</label>                    
+                    <select asp-for="@Model.SahipId" class="form-select" asp-items="@ViewBag.musteriler" style="width:200px">
+                        <option selected value="">Kişi Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="@Model.SahipId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Metre Kare</label>
+                    <input asp-for="@Model.M2" class="form-control" />
+                    <span asp-validation-for="@Model.M2" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label>Fiyat</label>
+                    <input id="cost" asp-for="@Model.Fiyat" class="form-control" />
+                    <span asp-validation-for="@Model.Fiyat" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12 text-lg-center ">
+                <hr />
+                <h6 class="font-weight-bold">Adres Bilgileri</h6>
+                <hr />
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Adres</label>
+                    <span asp-validation-for="@Model.Adres" class="text-danger"></span>
+                    <input asp-for="@Model.Adres" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Site Adı</label>
+                    <span asp-validation-for="@Model.SiteAdi" class="text-danger"></span>
+                    <input asp-for="@Model.SiteAdi" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Blok</label>
+                    <span asp-validation-for="@Model.Blok" class="text-danger"></span>
+                    <input asp-for="@Model.Blok" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Kat</label>
+                    <span asp-validation-for="@Model.Kat" class="text-danger"></span>
+                    <input asp-for="@Model.Kat" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Daire No</label>
+                    <span asp-validation-for="@Model.DaireNo" class="text-danger"></span>
+                    <input asp-for="@Model.DaireNo" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Şehir</label>
+                    
+                    <select style="width:100%" id="SehirList" asp-for="@Model.Il" class="form-select" asp-items="ViewBag.sehirler">
+                        <option selected value="">Şehir Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="@Model.Il" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">İlçe</label>
+                    <select style="width:100%" id="IlceList" asp-for="@Model.Ilce" asp-items="ViewBag.ilceler" class="form-select">
+                        <option selected value="">İlçe Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="@Model.Ilce" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Mahalle</label>
+                    <select style="width:100%" id="MahalleList" asp-for="@Model.Semt" asp-items="ViewBag.mahalleler" class="form-select">
+                        <option selected value="">Mahalle Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="@Model.Semt" class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+                <h6 class="font-weight-bold text-lg-center">Konut Bilgileri</h6>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-md-2">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Salon</label>
+                    <span asp-validation-for="@Model.Salon" class="text-danger"></span>
+                    <input style="min-width:50px" asp-for="@Model.Salon" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Oda</label>
+                    <span asp-validation-for="@Model.Oda" class="text-danger"></span>
+                    <input style="min-width:50px" asp-for="@Model.Oda" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Banyo</label>
+                    <span asp-validation-for="@Model.Banyo" class="text-danger"></span>
+                    <input style="min-width:50px" asp-for="@Model.Banyo" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Mutfak</label>
+                    <span asp-validation-for="@Model.Mutfak" class="text-danger"></span>
+                    <input style="min-width:50px" asp-for="@Model.Mutfak" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group mb-3">
+                    <label style="width:75px" class="pt-1">Balkon</label>
+                    <span asp-validation-for="@Model.Balkon" class="text-danger"></span>
+                    <input style="min-width:50px" asp-for="@Model.Balkon" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+                <h6 class="font-weight-bold text-lg-center">Genel Bilgiler</h6>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group mb-3">
+                
+                <textarea asp-for="@Model.Bilgi" class="form-control"  style="resize:none;width:100%" rows="8"></textarea>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <button class="btn btn-md btn-success float-end" type="submit">Kaydet</button>
+    </div>
+
+</form>
+
+@section Scripts{
+<script type="text/javascript">
+    $(document).ready(function(){
+         $("#SehirList").change(function(){
+            $("#IlceList").empty();
+            $("#MahalleList").empty();
+            $("#MahalleList").append('<option value="'+-1+'"> Mahalle Seçiniz</option>');
+            $.ajax({
+                type:'GET',
+                url:'@Url.Action("LoadIlce")',
+                dataType:"json",
+                data:{sehir_key:$("#SehirList").val()},
+                success:function(ilceler){
+                    $("#IlceList").append('<option value="'+-1+'"> İlçe Seçiniz</option>');
+                    $.each(ilceler,function(i,ilce){
+                        $("#IlceList").append('<option value="'+ilce.value+'"> '+ilce.text+'</option>');
+                    });
+                }
+            });
+         });
+
+
+         $("#IlceList").change(function(){
+            $("#MahalleList").empty();
+            $.ajax({
+                type:'GET',
+                url:'@Url.Action("LoadMahalle")',
+                dataType:"json",
+                data:{ilce_key:$("#IlceList").val()},
+                success:function(mahalleler){
+                    $("#MahalleList").append('<option value="'+-1+'"> Mahalle Seçiniz</option>');
+                    $.each(mahalleler,function(i,mahalle){
+                        $("#MahalleList").append('<option value="'+mahalle.value+'"> '+mahalle.text+'</option>');
+                    });
+                }
+            });
+         });
+
+        $("#cost").on("input", function() {
+        // allow numbers, a comma or a dot
+        var v= $(this).val(), vc = v.replace(/[^0-9,\.]/, '');
+        if (v !== vc)
+            $(this).val(vc);
+    });
+
+
+    });
+
+
+
+</script>
+
+
+
+
+}

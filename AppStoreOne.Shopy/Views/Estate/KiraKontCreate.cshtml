@@ -1,0 +1,299 @@
+﻿@using AppStoreOne.DocMakerHelper.DocDtos
+@model KonutDocDto
+
+<form asp-action="KiraKontCreate" method="post" class="mx-auto bs-w-form mt-3 border border-1 shadow p-3">
+
+    <div class="form-group text-lg-center ">
+        <h4 class="font-weight-bold">Konut Kira Kontratı Oluştur</h4>
+        <hr />
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Tapu İli / İlçesi / Bölgesi</label>
+                <span asp-validation-for="@Model.SehirIlce" class="text-danger"></span>
+                <input asp-for="@Model.SehirIlce" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Mahallesi / Sitesi</label>
+                <span asp-validation-for="@Model.Mahalle" class="text-danger"></span>
+                <input asp-for="@Model.Mahalle" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Cadde/Sokak</label>
+                <span asp-validation-for="@Model.CaddeSokak" class="text-danger"></span>
+                <input asp-for="@Model.CaddeSokak" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Bina (Blok) No / İç Kapı No.</label>
+                <span asp-validation-for="@Model.BlokNo" class="text-danger"></span>
+                <input asp-for="@Model.BlokNo" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiralananın Cinsi</label>
+                <span asp-validation-for="@Model.KiraCins" class="text-danger"></span>
+                <input asp-for="@Model.KiraCins" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiralayan</label>
+                <span asp-validation-for="@Model.Sahip" class="text-danger"></span>
+                <input asp-for="@Model.Sahip" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiralayanın T.C. Kimlik No</label>
+                <span asp-validation-for="@Model.SahipKimlik" class="text-danger"></span>
+                <input asp-for="@Model.SahipKimlik" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiralayanın Adresi</label>
+                <span asp-validation-for="@Model.SahipAdres" class="text-danger"></span>
+                <input asp-for="@Model.SahipAdres" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group mb-3">
+                <label style="width:100px" class="pt-1">Kiracı Seçiniz</label>
+                <select id="KiraciCb" asp-for="@Model.KiraciId" class="form-select" asp-items="@ViewBag.musteriler" style="width:200px">
+                    <option selected value="">Kişi Seçiniz</option>
+                </select>
+                <input id="KiraciAdi" type="hidden" asp-for="@Model.Kiraci" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiracının T.C. Kimlik No</label>
+                <span asp-validation-for="@Model.KiraciKimlik" class="text-danger"></span>
+                <input id="KiraciKimlik" asp-for="@Model.KiraciKimlik" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiracının Adresi</label>
+                <span asp-validation-for="@Model.KiraciAdres" class="text-danger"></span>
+                <input id="KiraciAdres" asp-for="@Model.KiraciAdres" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kefil Adı Soyadı</label>
+                <span asp-validation-for="@Model.Kefil" class="text-danger"></span>
+                <input  asp-for="@Model.KiraciAdres" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Sözleşme Başlangıç Tarihi</label>
+                <span asp-validation-for="@Model.SozlesmeTarih" class="text-danger"></span>
+                <input asp-for="@Model.SozlesmeTarih" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Sözleşme Süresi (Ay)</label>
+                <span asp-validation-for="@Model.SozSureAy" class="text-danger"></span>
+                <input asp-for="@Model.SozSureAy" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>1 Aylık Kira Bedeli</label>
+                <span asp-validation-for="@Model.KiraBedel" class="text-danger"></span>
+                <input asp-for="@Model.KiraBedel" class="form-control cost" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Depozito</label>
+                <span asp-validation-for="@Model.Depozito" class="text-danger"></span>
+                <input asp-for="@Model.Depozito" class="form-control cost" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kira Bedeli Ödeme Şekli</label>
+                <span asp-validation-for="@Model.KiraOdemeSekli" class="text-danger"></span>
+                <input asp-for="@Model.KiraOdemeSekli" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiralananı Kullanım Şekli</label>
+                <span asp-validation-for="@Model.KiraKullanimSekli" class="text-danger"></span>
+                <input asp-for="@Model.KiraKullanimSekli" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Kiralananın Durumu</label>
+                <span asp-validation-for="@Model.KiraDurumu" class="text-danger"></span>
+                <input asp-for="@Model.KiraDurumu" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Demir Baş Listesi</label>
+                <textarea asp-for="@Model.DemirBasListe" class="form-control" rows="8" style="resize:none"><</textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Banka</label>
+                <span asp-validation-for="@Model.Banka" class="text-danger"></span>
+                <input asp-for="@Model.Banka" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Şubesi</label>
+                <span asp-validation-for="@Model.BankaSube" class="text-danger"></span>
+                <input asp-for="@Model.BankaSube" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Hesap No / İban</label>
+                <span asp-validation-for="@Model.Iban" class="text-danger"></span>
+                <input asp-for="@Model.Iban" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+        <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>İlgili Mahkeme</label>
+                <span asp-validation-for="@Model.Mahkeme" class="text-danger"></span>
+                <input asp-for="@Model.Mahkeme" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <button class="btn btn-md btn-success float-end" type="submit">Oluştur</button>
+    </div>
+
+</form>
+
+
+
+
+@section Scripts{
+<script type="text/javascript">
+    $(document).ready(function(){
+         $("#KiraciCb").change(function(){
+            $("#KiraciKimlik").empty();
+            $("#KiraciAdres").empty();
+            $.ajax({
+                type:'GET',
+                url:'@Url.Action("GetCustomer")',
+                dataType:"json",
+                data:{id:$("#KiraciCb").val()},
+                success:function(kiraci){
+                    var json = $.parseJSON(kiraci);
+                    $("#KiraciAdi").attr('value',json.MusteriAdi);
+                    $("#KiraciKimlik").attr('value',json.IdentityNo);
+                    $("#KiraciAdres").attr('value', json.Adres1);
+                }
+            });
+         });
+
+
+
+
+        $(".cost").on("input", function() {
+        var v= $(this).val(), vc = v.replace(/[^0-9,\.]/, '');
+        if (v !== vc)
+            $(this).val(vc);
+    });
+
+
+    });
+
+
+
+</script>
+
+
+
+
+}

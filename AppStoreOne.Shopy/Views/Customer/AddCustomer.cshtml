@@ -1,0 +1,79 @@
+﻿@model CustomerAddDto
+
+<form asp-action="AddCustomer" method="post" class="mx-auto bs-w-form mt-3 border border-1 shadow p-3">
+    <div class="form-group text-lg-center ">
+        <h6>Müşteri Ekle</h6>
+        <hr />
+    </div>
+
+    <div class="form-group">
+        <label>Yetki Tipi</label>
+        <select asp-for="@Model.MusteriTip" class="form-select">
+            <option value="1">Kişi</option>
+            <option value="2">Tüzel</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Müşteri Adı</label>
+        <span asp-validation-for="@Model.MusteriAdi" class="text-danger"></span>
+        <input asp-for="@Model.MusteriAdi" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Kimlik No veya Ticari Sicil No</label>
+        <span asp-validation-for="@Model.IdentityNo" class="text-danger"></span>
+        <input asp-for="@Model.IdentityNo" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>E-Posta</label>
+        <span asp-validation-for="@Model.Eposta" class="text-danger"></span>
+        <input asp-for="@Model.Eposta" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Gsm</label>
+        <span asp-validation-for="@Model.Gsm" class="text-danger"></span>
+        <input asp-for="@Model.Gsm" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Telefon</label>
+        <span asp-validation-for="@Model.Telefon" class="text-danger"></span>
+        <input asp-for="@Model.Telefon" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Adres 1</label>
+        <span asp-validation-for="@Model.Adres1" class="text-danger"></span>
+        <input asp-for="@Model.Adres1" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Adres 2</label>
+        <span asp-validation-for="@Model.Adres2" class="text-danger"></span>
+        <input asp-for="@Model.Adres2" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Banka</label>
+        <span asp-validation-for="@Model.Banka" class="text-danger"></span>
+        <input asp-for="@Model.Banka" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Şubesi</label>
+        <span asp-validation-for="@Model.BankaSube" class="text-danger"></span>
+        <input asp-for="@Model.BankaSube" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Hesap No / İban</label>
+        <span asp-validation-for="@Model.Iban" class="text-danger"></span>
+        <input asp-for="@Model.Iban" class="form-control" />
+    </div>
+
+
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <button class="btn btn-md btn-success float-end" type="submit">Kaydet</button>
+    </div>
+
+</form>

@@ -1,0 +1,61 @@
+﻿@model List<CustomerListDto>
+<h4>Müşteriler</h4>
+
+<a asp-controller="Customer" asp-action="AddCustomer" class="btn btn-primary">Yeni Müşteri</a>
+<br />
+
+
+<div class="table-responsive">
+    <table class="table table-bordered  table-light table-hover caption-top">
+
+        <tr>
+            <th class="text-md-center bs-td">
+                Müşteri Adı
+            </th>
+            <th class="text-md-center bs-td">
+                Gsm
+            </th>
+            <th class="text-md-center bs-td">
+                Telefon
+            </th>
+            <th class="text-md-center bs-td">
+                E-Posta
+            </th>
+            <th class="text-md-center bs-td">
+                Müşteri Tipi
+            </th>
+
+            <th class="text-center bs-td">
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="background-color:#FFF">
+                <td class="text-start align-middle">
+                    @item.MusteriAdi
+                </td>
+                <td class="text-md-center align-middle">
+                    @item.Gsm
+                </td>
+                <td class="text-md-center align-middle">
+                    @item.Telefon
+                </td>
+                <td class="text-md-center align-middle">
+                    @item.Eposta
+                </td>
+                <td class="text-md-center align-middle">
+                    @if (item.MusteriTip == 1)
+                    {<p>Kişi</p> }
+                    else
+                    { <p>Tüzel</p>}
+                </td>
+                <th class="text-end align-middle">
+                    <a asp-action="updatecustomer" asp-controller="customer" asp-route-id="@item.Id" class="btn btn-success">Düzenle</a>
+                    <a asp-action="deletecustomer" asp-controller="customer" asp-route-id="@item.Id" class="btn btn-danger">Sil</a>
+                </th>
+            </tr>
+
+        }
+
+    </table>
+</div>
